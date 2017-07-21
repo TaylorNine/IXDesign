@@ -1,0 +1,654 @@
+/*!
+Theme Name: IX DESIGN BAREBONES
+Theme URI: http://www.ninedesign.co
+Author: Taylor Fedt
+Author URI: https://www.ninedesign.co
+Description: Awesome portfolio theme designed and developed by Taylor Fedt.
+Version: 0.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: IX DESIGN
+Domain Path: /languages/
+Tags: one-column, two-columns, left-sidebar, right-sidebar, flexible-header, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, footer-widgets, full-width-template, microformats, post-formats, sticky-post, theme-options, threaded-comments, translation-ready, blog, e-commerce
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+Base WP is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+
+/*------------------------*/
+// PARTIALS/MIXINS/ETC.
+/*------------------------*/
+
+// Import Bootstrap Compass integration
+@import "sass/bootstrap-compass";
+// Import Breakpoint Mixins
+@import "sass/breakpoints";
+// Import Bootstrap for Sass
+@import "sass/bootstrap";
+// Import Bourbon
+@import "sass/bourbon/bourbon";
+// Import IX Design Branding
+@import "sass/ix-design";
+// Import IX Navbar
+@import "sass/ix-navbar";
+// Import IX Buttons
+@import "sass/ix-buttons";
+// Import CSS Slider Code
+@import "sass/slider";
+
+/*------------------------------------*/
+// MIXINS AND VARIABLES
+/*------------------------------------*/
+
+@mixin proxima($family,$weight,$style) {
+  font-family: $family, "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: $weight;
+  font-style: $style;
+}
+$hero: #CED3DC;
+$hero-bg:     $hero;
+$hero-text:   adjust_color($hero,$lightness:-20%);
+$hero-text2:  adjust_color($hero,$lightness:-30%);
+
+$blue-bg:         #00A7E1;
+$blue-headline:   adjust_color($blue-bg, $lightness:20%);
+$blue-subhead:    adjust_color($blue-bg, $lightness:-10%);
+$blue-text:       adjust_color($blue-bg, $lightness:40%);
+
+/*------------------------------------*/
+// MAIN PAGE DIVISIONS & ELEMENTS
+/*------------------------------------*/
+
+// TYPE VARIABLES
+$headline-font: "proxima-nova";
+$subhead-font:  "proxima-nova";
+$body-font:     "adelle";
+
+// FONT WEIGHTS
+
+$light:       300;
+$regular:     400;
+$semibold:    600;
+$bold:        700;
+
+body {
+  background-color: $bg-dark-section;
+  color: $text-color;
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;;
+}
+
+h1,h2,h3,h4 {
+  font-family:$headline-font;
+}
+
+h5,h6 {
+  font-family: $subhead-font;
+}
+
+p {
+  font-family: $body-font;
+}
+
+.scroll-button-wrapper {
+  width:100%;
+  height:50px;
+  margin-bottom: -20px;
+  text-align: center;
+  & .scroll-down {
+    font-size: 3em;
+  }
+  & .intro {
+  background-color: $hero-bg;
+  color: darken($hero-bg, 10%);
+  opacity: 0.7;
+  }
+  & .about {
+    background-color: $blue-bg;
+    color: lighten($blue-bg, 10%);
+    opacity: 0.7;
+  }
+}
+
+a {color: $b4; text-decoration: none;}
+a:link {text-decoration: none;}
+a:visited {color: $b4;}
+a:hover {
+  color: $text-color;
+  text-decoration: none;
+}
+a:active {
+  color: $text-color;
+  text-decoration: none;
+}
+
+/*------------------------*/
+// PRELOADER STYLES
+/*------------------------*/
+
+// Preloader Varibles
+$size: 1em;
+$duration: 0.75s;
+$border-radius: $size;
+$bg-color: lightgray;
+
+#loader-wrapper .loader-section {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $bg1;
+    z-index: 1000;
+}
+
+#loader-wrapper .loader-section.section-left {
+    left: 0;
+}
+
+#loader-wrapper .loader-section.section-right {
+    right: 0;
+}
+
+#loader {
+    top: 50;
+    left:50;
+    display: block;
+    z-index: 1001; /* anything higher than z-index: 1000 of .loader-section */
+}
+
+.inner1, .inner2, .inner3 {
+  display: inline-block;
+  margin: $size*0.125;
+  width: $size/2;
+  height:$size/2;
+  border:1px solid $bg-color;
+  border-radius: $border-radius;
+  background-color: $bg-color;
+  -webkit-transform-origin: 50%;
+  -webkit-animation-duration: $duration;
+  -webkit-animation-name: rotate;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+
+  .inner2 {
+  -webkit-animation-delay: $duration*0.25;
+}
+
+  .inner3 {
+  -webkit-animation-delay: $duration*0.5;
+}
+
+/*------------------------*/
+// ANIMATION CLASSES
+/*------------------------*/
+
+.hide {opacity:0;}
+.show {opacity:1;}
+
+/*------------------------*/
+// HERO AREA STYLES
+/*------------------------*/
+
+.portrait {
+  margin-bottom: 20px;
+  @include breakpoint (xs) {
+    width:150px;
+    height:150px;
+    margin-bottom: 10px;
+  }
+}
+
+.hero {
+  background-color: $hero-bg;
+  // background-image: url("../img/bg-hero.png");
+  min-height:620px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 70px;
+  padding-bottom:70px;
+  overflow: hidden;
+  & h3 {
+    color:$bg1;
+    text-align: center;
+  }
+  & h3.scroll-down {
+    color:darken($hero-bg,10%);
+    text-align: center;
+  }
+  & h5 {
+    color: $hero-text2;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    @include breakpoint(sm) {
+      font-size: 1.5em;
+      letter-spacing: 1px;
+    }
+    @include breakpoint(xs) {
+      font-size: 1em;
+      letter-spacing: 1px;
+    }
+  }
+& h1 {
+  color:$hero-text;
+  text-align: center;
+  letter-spacing: 2px;
+  margin-top: 0px;
+  font-size: 5.7em;
+  font-weight: 700;
+  line-height: 0.89em;
+  @media (max-width:600px) {font-size:5em;}
+  span {
+    color:$hero-text2;
+  }
+}
+& a:hover {
+  text-decoration: none;
+}
+}
+
+.cta-area {
+  margin-top:30px;
+  margin-bottom: 80px;
+}
+
+// ABOUT ME SECTION
+
+.services {
+  min-height: 400px;
+  background-color:$blue-bg;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  text-align:left;
+  & h1.headline {
+  color: $blue-headline;
+  @include font-options("proxima-nova",700,normal);
+  margin-top: -20px;
+  text-align: center;
+  @media (min-width: 1000px) {font-size:7.9em;}
+  @media (min-width: 800px) {font-size:7.1em;}
+  @media (max-width: 799px) {font-size:6em;}
+  @media (max-width: 676px) {font-size:5.8em;}
+  @media (min-width: 601px) {font-size:5.4em;}
+  @media (max-width: 600px) {font-size:4.5em;}
+  @media (max-width: 500px) {font-size:3em;}
+  @media (max-width: 400px) {font-size:2em;}
+  @include breakpoint(xs) {text-align: left;}
+  }
+  & h2 {
+    color: $blue-subhead;
+    font-family:"proxima-nova";
+    font-weight: 600;
+    font-size: 2.2em;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    @include breakpoint(xs){font-size: 1.7em; margin-top:20px;}
+  }
+  & h4 {
+    width:100%;
+    color: $blue-subhead;
+    font-family:"proxima-nova";
+    font-weight:300;
+    text-align: center;
+  }
+    & p {
+      color: $blue-text;
+      font-family:$body-font;
+      font-size: 1.5em;
+      line-height: 1.7em;
+      margin-bottom: 30px;
+      @media (max-width: 799px) {font-size:2em;}
+      @media (max-width: 600px) {font-size:2em;}
+      @media (max-width: 500px) {font-size:1.5em;}
+      @media (max-width: 400px) {font-size:1.5em;}
+    }
+    & img {
+      margin-top:20px;
+    }
+  }
+
+// PORTFOLIO
+
+$p-bg: #1d2031;
+
+.portfolio {
+  min-height: 600px;
+  background-color: #1d2031;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  & h1.headline {
+  color: adjust_color($p-bg, $lightness:20%);
+  @include font-options("proxima-nova",700,normal);
+  font-size:6em;
+  margin-top:-26px;
+  text-align: center;
+  @media (min-width: 1000px) {font-size:7.9em;}
+  @media (min-width: 800px) {font-size:7.1em;}
+  @media (max-width: 799px) {font-size:6em;}
+  @media (max-width: 676px) {font-size:5.8em;}
+  @media (min-width: 601px) {font-size:5.4em;}
+  @media (max-width: 600px) {font-size:4.5em;}
+  @media (max-width: 500px) {font-size:3em;}
+  @media (max-width: 400px) {font-size:2em; text-align: left;}
+  }
+  & h2 {
+    color: adjust_color($p-bg, $lightness:20%);
+    font-family:"proxima-nova";
+    font-size: 3.2em;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+  }
+}
+
+/*------------------------*/
+// IMAGE OVERLAY HOVER
+// IMAGE WRAPPER --> WORK-WRAPPER --> work-item
+// The overlay is taken care of with the transition mix in. All three DIVs are needed for alignment apparently.
+/*------------------------*/
+
+.image-wrapper {
+  width:100%;
+  height:100%;
+  position:relative;
+  margin-top:20px;
+  opacity: 1;
+  @include transition(all 0.5s ease-in);
+  @include breakpoint(sm) {
+    max-height:100%;
+    max-width:100%;
+  }
+  &:hover {
+    opacity:1;
+    @include transform(scale(1.12));
+  }
+}
+
+.work-wrapper {
+  width: 100%;
+  height:100%;
+  position: absolute;
+  margin-right:10px;
+}
+
+.work-item {
+  width: 100%;
+  height:100%;
+  position:relative;
+  background-color:rgba(0,0,0,0.8);
+  opacity:0;
+  margin-top: -220px;
+  text-align: center;
+  @include transition(opacity 0.3s ease);
+  @include breakpoint(sm){display:none;}
+  @include breakpoint(xs){display:none;}
+  &:hover, &:active {
+    opacity:1.0;
+  }
+  & h3 {
+    //background-color: rgba(0,0,0,0.1);
+    color:$text-color;
+    padding-top:84px;
+    &:hover {text-decoration: none;}
+    }
+}
+
+/*------------------------*/
+// MODAL STYLING
+// Using built in modals, override styles here.
+/*------------------------*/
+
+$overlay:     #1d2031;
+$modal-body:  #25293f;
+$modal-text:  #EBECEE;
+
+.mar-top-10px {margin-top:10px;}
+.close {
+  color:$text-color;
+  opacity:0.5;
+  font-size:0.9em;
+  &:hover {
+    color:$b1;
+    opacity:1.0;
+  }
+}
+.dark-bg {
+  background-color:$bg1;
+  min-height: 30px;
+}
+.modal, .fade, .modal-dialog, .modal-header, .modal-footer, .modal-content, .modal-body {
+  border-radius: 0px;
+  box-shadow: 0px 0px 0px;
+  border:0px;
+}
+.modal-backdrop, .fade {
+  background-color:$overlay;
+}
+.modal .fade {
+  height:100%;
+  background-color: $overlay;
+  border-radius: 0px;
+}
+.modal-dialog {
+  min-width: 60%;
+  height: 100%;
+  background-color: $modal-body;
+  border-radius: 0px;
+  //margin: 10px;
+}
+.modal-content {
+  background-color: $modal-body;
+  border-radius: 0px;
+  box-shadow: 0px 0px 0px;
+  text-align: left;
+  // TITLE
+  & .modal-header {
+    background-color:$modal-body;
+    border-radius: 0px;
+    box-shadow:0px 0px 0px;
+    padding-top:0px;
+    & button {}
+    & modal-title {
+      color:darken($modal-text,10%);
+      font-size:2em;
+      letter-spacing: 2em;
+      padding-top:15px;
+      & h4 small {
+        color: $modal-text;
+        line-height: 1em;
+      }
+      & h4 {
+        color:$modal-text;
+        line-height: 1em;
+        margin-top:5px !important;
+      }
+      & small {
+        font-weight: 700;
+      }
+    }
+  }
+  .modal-footer {
+    padding-bottom: 30px;
+}
+  // CAROUSEL AND IMAGES GO HERE
+  & .modal-body {
+    background-color:$modal-body;
+    padding-left:0px;
+    padding-right:0px;
+    padding-top:0px;
+    & .project-description {
+      padding-top:10px;
+      padding-bottom: 10px;
+      padding-left: 40px;
+      padding-right: 40px;
+      margin-bottom: 20px;
+      & h6 {
+        color:lighten($modal-text,10%);
+        font-size: 0.9em;
+      }
+      & p {
+        font-family: "proxima-nova";
+        color:lighten($modal-text,50%);
+        font-size: 1.4em;
+        line-height: 1.5em;
+        letter-spacing: 1px;
+        margin-bottom: 30px;
+        }
+      & code {
+        background-color:$bg5;
+        border-radius: 0px;
+        font-size:0.9em;
+        color:lighten($bg8,20%);
+        }
+    }
+  }
+  // DESCRIPTION GOES HERE
+  & .modal-footer {
+    text-align: left;
+    & h6 {
+      color:darken($text-color-dark,15%);
+    }
+    & p {
+    }
+    & code {
+      background-color:$bg5;
+      border-radius: 0px;
+      color:$text-color;
+    }
+  }
+}
+
+.screen-mock {
+  margin-bottom: 30px;
+}
+
+/*------------------------*/
+// CONTACT FORM STYLES
+/*------------------------*/
+form {
+  & button {
+    margin-top:30px;
+  }
+}
+
+// Define all text inputs
+#{$all-text-inputs} {
+  height:60px;
+  min-width: 100%;
+  background: transparent;
+  border: 1px solid #4A5B61;
+  font-family: "proxima-nova";
+  font-weight: 300;
+  font-size: 1.4em;
+  letter-spacing: 0.1em;
+  margin-top:20px;
+  padding: 15px;
+  outline:none;
+}
+#{$all-text-inputs-focus},
+#{$all-text-inputs-hover} {
+  background: #2F3D42;
+  border: 1px solid #4A5B61;
+  outline:none;
+
+}
+#{$all-text-inputs-active} {
+  background-color: #232B2E;
+  border: 1px solid #435258;
+  @include user-select(none);
+  @include tab-focus;
+  outline:none;
+}
+
+textarea {
+  height: 220px;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+$c-bg: $prune;
+
+#contact {
+  background-color:$c-bg;
+  padding-top:100px;
+  padding-bottom:100px;
+}
+
+.contact-card {
+  background-color:adjust_color($c-bg,$lightness:-15%);
+  padding: 10px;
+  & h1{
+  @include breakpoint(xs) {font-size:1.8em;}
+}
+  & .line-1 {
+    font-family: $subhead-font;
+    background-color:adjust_color($c-bg,$lightness:-5%);
+    text-align: center;
+  }
+  & .line-2 {
+    font-family: $subhead-font;
+    background-color:adjust_color($c-bg,$lightness:-5%);
+    margin-top:10px;
+    text-align: center;
+  }
+}
+
+.contact-headline {
+  & h1 {
+  color:adjust_color($c-bg,$lightness:10%);
+  @include font-options("proxima-nova",700,normal);
+  font-size:5em;
+  margin-top:-26px;
+  text-align: center;
+  @media (min-width: 1000px) {font-size:8em;}
+  @media (min-width: 800px) {font-size:6.2em;}
+  @media (max-width: 600px) {font-size:6em;}
+  @media (max-width: 500px) {font-size:4em;}
+  @media (max-width: 400px) {font-size:3em;}
+  }
+}
+
+.email:after {
+content: 'taylor\40ninedesign.co';
+}
+
+/*------------------------*/
+// FOOTER/SOCIAL WIDGET STYLES
+/*------------------------*/
+
+footer {
+  & h3 {
+    color: $text-color;
+    font-size: 3em;
+    margin-bottom: 0px;
+    text-align: center;
+  }
+  & p {
+    color: $text-color;
+    font-size: 1em;
+    margin-top:2px;
+    text-align: center;
+  }
+}
+
+.top-button-wrapper {
+  width:100%;
+  height:3em;
+  margin-bottom:0px;
+  & span {
+    font-family: "proxima-nova";
+    font-weight: 400;
+  }
+}
