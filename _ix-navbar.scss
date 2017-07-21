@@ -1,0 +1,232 @@
+// NAVIGATION
+// ALL OF BOOTSTRAPS CRAZY CLASSES FOR THIS SHITs.
+
+.nav {
+  @include breakpoint(xs) {
+    background-color: darken($purple,20%);
+    font-size:1.3em;
+    line-height: 1em;
+    text-align: right;
+  }
+}
+
+.navbar {
+  height:60px;
+  background-color: $bg2;
+  border-radius: 0px;
+  font-size: 0.6em;
+}
+
+.navbar-nav {
+  background-color:$bg2;
+  height:40px;
+  margin-top: 8px;
+}
+
+.navbar-right {
+  display:inline-block;
+  float:right;
+  margin-top: 12px;
+}
+
+.navbar-left {
+  margin-top:7px;
+}
+
+.logo{
+  margin-top:7px;
+}
+
+.navbar-toggle, .navbar-collapse {
+    border-radius: 0px;
+    box-shadow:0px 0px 0px;
+    //margin-top: 13px;
+    line-height: 2em;
+    overflow-x: visible;
+ }
+
+ .collapse {
+   height: 100%;
+   overflow-x:visible;
+ }
+
+.navbar-toggle .icon-bar {
+  background-color: $bg4;
+  color:lighten($bg8,20%);
+  font-size:2em;
+  border-radius: 2px;
+}
+
+.navbar-toggle {
+  height:100%;
+  float: right;
+  margin-top:13px;
+  &:hover {
+    background-color: $bg3;
+  }
+}
+
+.navbar-collapse {
+  background-color: transparent;
+  margin-top: -6px;
+}
+
+// Custom Navbar
+// Because fuck the BS nav, I've never liked it.
+
+// The base of the navbar
+.ix-nav {
+    width:100%;
+    height: 60px;
+    background-color:$bg1;
+    border-bottom: 1px solid $bg2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    & .left {
+      float:left;
+      padding-top: 4px;
+      padding-left: 10px;
+      padding-right: 30px;
+    }
+    & .right {
+      float: right;
+    }
+    & #nav-button-wrapper {
+      height:60px;
+      width: 60px;
+      background-color: $bg1;
+      border-left: 1px solid $bg2;
+      border-bottom: 1px solid $bg2;
+      @include transition(width 0.1s ease);
+      &:hover, &:focus {
+        background-color: $bg2;
+        border-left: 1px solid $bg3;
+      }
+    }
+    & .nav-button {
+      height:100%;
+      width:100%;
+      margin-top: 3px;
+      margin-left: 8px;
+      @include tab-focus;
+      outline: 0;
+      & .bar1,.bar2,.bar3 {
+        height:2px;
+        width: 30px;
+        background-color:#ffffff;;
+        margin-bottom: 7px;
+      }
+      &:hover, &:focus, &:active {
+        background:transparent;
+        outline:0;
+      }
+    }
+}
+
+// Style for the sliding side translate
+.side-navigation {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    float:right; // Move to right side
+    z-index: 1000; /* Stay on top */
+    top: 0;
+    right: 0;
+    background-color: $bg1; /* Black*/
+    border-left-color:$bg2;
+    border-left-style: solid;
+    border-left-width: 0px;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    // Style side-navigation links
+    & a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: $text-color;
+    display: block;
+    @include transition(all 0.3s ease);
+  }
+  // side-navigation link hover styles
+  & a:hover, a:visited, .offcanvas a:focus {
+    background-color:$bg2;
+    color: lighten($text-color,5%);
+    text-decoration: none;
+  }
+  // side-navigation close button
+  & .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    &:hover, &:focus {
+      background-color: transparent;
+      text-decoration: none;
+    }
+  }
+
+}
+
+// Underline Effects for navbar
+
+// Override more of bootstraps overly complicated crap
+// This removes the white background on line 5449 compiled version
+.nav > li > a:hover, .nav > li > a:focus, .nav > li > a:visited, {
+  background-color: $bg2;
+}
+
+.nav > li {
+  display: inline-block;
+  position: relative;
+}
+
+ul li a {
+  background-color:$bg2;
+  font-size: 2em;
+  &:hover, &:active, &:visited {
+    background-color:$bg2;
+  }
+}
+
+ul li a.underline {
+  position: relative;
+  color:$text-color;
+  @include breakpoint(xs){
+    background:$bg2;
+  }
+}
+
+ul li a.underline:after {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 8px;
+  width: 0;
+  height: 2px;
+  background-color:$b3;
+  content: "";
+  transition: width 0.4s ease-in;
+  @include breakpoint(xs){
+  background-color: none;
+  height: 0px;
+  }
+}
+
+.underline:hover {
+  background-color:$bg3;
+  color: $b4;
+  // @include breakpoint(xs){}
+}
+
+.underline:hover:after {
+  background-color:$b3;
+  width: 100%;
+  // @include breakpoint(xs){
+  //  width: 0%;
+  // }
+}

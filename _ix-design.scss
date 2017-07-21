@@ -1,0 +1,78 @@
+///// Global Variables for IX Design
+///// All this can be found in the live style guide.
+
+//// COLOR PALETTE
+// All Listed Darkest to ligtest.
+
+// Background & Dark Blue
+$bg0: #13181A; // Replaces bg1 as darkest
+$bg1: #191f21;
+$bg2: #232b2e;
+$bg3: #242f33;
+$bg4: #2f3d42;
+$bg5: #3f5259;
+$bg6: #506870;
+$bg7: #7ba0ad;
+$bg8: #99c2d0;
+
+$bg-dark-section:   $bg0;
+$bg-light-section:  $bg1;
+
+// New Colors
+$yankblue:      #0099cc;
+$bright-blue:   #00a7e1;
+$prune:         #701124;
+$bright-prune:  #9a1832;
+$purple:        #CED3DC;
+$dark-purple:   #1d2031;
+
+// Old Blue Colors
+
+$b1: #489bb0;
+$b2: #4fabc2;
+$b3: $bright-blue; // NEW BLUE COLOR
+$b4: #7de5ff;
+
+// Red Colors
+
+$r1: #a34845;
+$r2: $bright-prune;
+$r3: #eb6763;
+$r4: #ff8480;
+
+// Green Colors
+
+$g1: #63a345;
+$g2: #72bd4f;
+$g3: #8eeb63;
+$g4: #a8ff80;
+
+// Orange Colors
+
+$o1: #a35c45;
+$o2: #c9603c;
+$o3: #fa794d;
+$o4: #ff8861;
+
+// NEW Saturated Blue Colors
+
+// Gray/White Colors
+
+// $text-color: #f5fdff; // More to come
+$text-color: #aba9bf;
+$text-color-dark: #858585;
+//background-color: #dfe8eb;
+//background-color: #e6e6e6;
+//background-color: #7c878a;
+
+//// Fonts
+
+
+
+///// MIXINS
+
+@mixin font-options($stack, $weight, $style) {
+  font-family:  $stack;
+  font-weight:  $weight;
+  font-style:   $style;
+}

@@ -1,0 +1,181 @@
+// IX Design Buttons
+
+button {
+  background:transparent;
+  border: 0px;
+}
+
+// 3D Call-To-Action Button
+@mixin cta-btn($background-color){
+  background-color:darken($background-color, 25%);
+  box-shadow: 0px 5px darken($background-color, 35%);
+  color:$color;
+  &:hover, &:active, &:focus {
+    background-color:darken($background-color, 25%);
+    box-shadow: 0px 2px darken($background-color, 35%);
+    transform: translateY(3px);
+    @include tab-focus;
+    outline: 0;
+  }
+}
+
+// Standard Button w/ Icon
+@mixin std-btn($background-color){
+  background-color:darken($background-color, 25%);
+  box-shadow: 0px 5px darken($background-color, 35%);
+  //color:$color;
+  &:hover, &:active, &:focus {
+    background-color:darken($background-color, 25%);
+    box-shadow: 0px 2px darken($background-color, 35%);
+    transform: translateY(3px);
+    @include tab-focus;
+    outline: 0;
+  }
+}
+
+a .btn-cta {
+  text-decoration: none;
+  &:hover, &:focus, &:active, &:visited {text-decoration: none;}
+}
+
+.btn-cta {
+  height: 57px;
+  min-width: 200px;
+  border-radius: 0px;
+  border: 0px;
+  font-family: "proxima-nova";
+  font-weight: 500;
+  font-size: 14px;
+  color: #ececec;
+  letter-spacing: 2px;
+  line-height: 21px;
+  text-align: center;
+  top: 0;
+  @include user-select(none);
+  @include transition (all 0.3s ease);
+  @media (max-width: 400px) {min-width:150px;}
+  }
+
+.btn-cta-green {
+  background-color:darken($g3, 25%);
+  box-shadow: 0px 5px darken($g3, 30%);
+  color:$text-color;
+  &:hover, &:focus {
+    background-color:darken($g3, 20%);
+    box-shadow: 0px 2px darken($g3, 30%);
+    transform: translateY(3px);
+    @include tab-focus;
+    outline: 0;
+  }
+  &:active {
+    background-color:darken($g3, 20%);
+    box-shadow: 0px 0px darken($g3, 30%);
+    transform: translateY(4px);
+    @include tab-focus;
+    outline: 0;
+  }
+}
+
+.btn-cta-blue {
+  background-color:$b3;
+  box-shadow: 0px 5px darken($b3, 10%);
+  color:#ececec;
+  &:hover, &:focus {
+    background-color:darken($b3, 20%);
+    box-shadow: 0px 2px darken($b3, 10%);
+    transform: translateY(3px);
+    @include tab-focus;
+    outline: 0;
+  }
+  &:active {
+    background-color:darken($b3, 10%);
+    box-shadow: 0px 0px darken($b3, 10%);
+    transform: translateY(4px);
+    @include tab-focus;
+    outline: 0;
+  }
+}
+
+.btn-cta-red {
+  background-color:lighten($r2,20%);
+  box-shadow: 0px 5px lighten($r2,5%);
+  color:#ececec;
+  &:hover, &:focus {
+    background-color:lighten($r2,2%);
+    box-shadow: 0px 2px darken($r2,10%);
+    transform: translateY(3px);
+    @include tab-focus;
+    outline: 0;
+  }
+  &:active {
+    background-color:lighten($r2, 20%);
+    box-shadow: 0px 0px lighten($r2, 30%);
+    transform: translateY(4px);
+    @include tab-focus;
+    outline: 0;
+  }
+}
+
+.btn-std-green {
+  background-color:darken($g3, 25%);
+  color:$text-color;
+  &:hover, &:active, &:focus {
+    background-color:darken($g3, 20%);
+    //transform: translateY(3px);
+    @include tab-focus;
+    outline: 0;
+  }
+}
+
+.btn-std-blue {
+  background-color:darken($b3, 25%);
+  color:$text-color;
+  &:hover, &:active, &:focus {
+    background-color:darken($b3, 20%);
+    //transform: translateY(3px);
+    @include tab-focus;
+    outline: 0;
+  }
+}
+
+.btn-std-red {
+  background-color:lighten($r2, 30%);
+  color:#ececec;
+  &:hover, &:active, &:focus {
+    background-color:$r2;
+    @include tab-focus;
+    outline: 0;
+  }
+}
+
+.btn-close {
+  height:30px;
+  width:30px;
+  background-color:adjust_color($prune,$lightness:-5%);
+  color:lighten($prune,40%);
+  padding-top: 5px;
+  padding-left: 8px;
+  text-align: center;
+  &:hover, &:active, &:focus {
+    background-color:adjust_color($prune,$lightness:10%);
+    @include tab-focus;
+    outline: 0;
+  }
+}
+
+.btn-nav {
+  height:40px;
+  width:40px;
+  background-color:transparent;
+  color:$text-color;
+  font-size: 1.4em;
+  font-weight: 600;
+  // padding-top: 5px;
+  // padding-left: 8px;
+  &:hover, &:active, &:focus {
+    background-color:$bg2;
+    color:lighten($text-color,10%);
+    @include tab-focus;
+    outline: 0;
+  }
+}
